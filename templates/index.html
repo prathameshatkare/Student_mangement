@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Result Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+  <style>
+    body {
+      transition: background 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-purple-100 via-blue-100 to-indigo-200 dark:from-gray-800 dark:to-gray-900 min-h-screen flex items-center justify-center p-4">
+
+  <div class="absolute top-4 right-4">
+    <button onclick="document.documentElement.classList.toggle('dark')"
+      class="bg-indigo-500 text-white px-4 py-2 rounded-full shadow hover:bg-indigo-700 transition">
+      🌙 Toggle Dark Mode
+    </button>
+  </div>
+
+  <div class="bg-white dark:bg-gray-800 p-8 md:p-10 rounded-3xl shadow-2xl w-full max-w-2xl animate-fadeIn">
+    <div class="text-center mb-8">
+      <h1 class="text-4xl font-bold text-indigo-700 dark:text-indigo-300">🎓 Student Result Portal</h1>
+      <p class="text-gray-500 dark:text-gray-300">Smartly manage and store student results.</p>
+    </div>
+
+    {% if message %}
+    <div class="mb-4 p-4 rounded-lg text-white {{ 'bg-green-500' if status == 'success' else 'bg-red-500' }}">
+      {{ message }}
+    </div>
+    {% endif %}
+
+    <form action="/submit" method="post" class="space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+        <input name="name" placeholder="Student Name" required class="input" />
+        <input name="roll" placeholder="Roll No" required class="input" />
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <input name="s1" type="number" placeholder="Subject 1" class="input" />
+        <input name="s2" type="number" placeholder="Subject 2" class="input" />
+        <input name="s3" type="number" placeholder="Subject 3" class="input" />
+      </div>
+      <div class="flex justify-center">
+        <button type="submit"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-2 rounded-xl transition-transform transform hover:scale-105">
+          🚀 Submit Result
+        </button>
+      </div>
+    </form>
+
+    <div class="text-center mt-8">
+      <a href="/all" class="text-indigo-600 hover:underline dark:text-indigo-400">📄 View All Results</a>
+    </div>
+  </div>
+
+  <script>
+    // Animate fade-in
+    document.body.classList.add("animate-fadeIn");
+  </script>
+
+  <style>
+    .input {
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+      border: 1px solid #d1d5db;
+      width: 100%;
+      outline: none;
+    }
+    .input:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 1px #6366f1;
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.6s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</body>
+</html>

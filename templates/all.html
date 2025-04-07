@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Results</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-10">
+  <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-xl p-6">
+    <h1 class="text-3xl font-bold text-indigo-600 mb-6">📋 All Student Results</h1>
+    <table class="w-full table-auto border-collapse">
+      <thead>
+        <tr class="bg-indigo-100 text-indigo-800">
+          <th class="px-4 py-2 border">Name</th>
+          <th class="px-4 py-2 border">Roll</th>
+          <th class="px-4 py-2 border">Subject 1</th>
+          <th class="px-4 py-2 border">Subject 2</th>
+          <th class="px-4 py-2 border">Subject 3</th>
+          <th class="px-4 py-2 border">Total</th>
+          <th class="px-4 py-2 border">Percentage</th>
+          <th class="px-4 py-2 border">Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in results %}
+        <tr class="text-center hover:bg-indigo-50">
+          {% for cell in row %}
+          <td class="px-4 py-2 border">{{ cell }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="text-center mt-6">
+      <a href="/" class="text-indigo-600 hover:underline">🔙 Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>
